@@ -42,17 +42,14 @@
         .roi-highlight {
             animation: pulse 2s infinite;
         }
-        50% { transform: scale(1.05); }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
         .number-counter {
             display: inline-block;
             font-weight: bold;
-        }
-        to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         .chart-container {
             height: 260px;
@@ -178,6 +175,74 @@
         </div>
     </div>
 
-    
+    <script>
+        // ROI Chart Configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('roiChart').getContext('2d');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['導入コスト', '保守的試算\n(年間効果)', '積極的試算\n(年間効果)'],
+                    datasets: [{
+                        label: '金額（万円）',
+                        data: [101, 318, 1411], // 101万円（導入コスト）, 318万円（保守的）, 1411万円（積極的）
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.8)',   // 赤（コスト）
+                            'rgba(59, 130, 246, 0.8)',  // 青（保守的）
+                            'rgba(16, 185, 129, 0.8)'   // 緑（積極的）
+                        ],
+                        borderColor: [
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(16, 185, 129, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.dataIndex === 0) {
+                                        return '導入コスト: ' + context.parsed.y + '万円';
+                                    } else if (context.dataIndex === 1) {
+                                        return '年間効果: ' + context.parsed.y + '万円 (ROI: 316%)';
+                                    } else {
+                                        return '年間効果: ' + context.parsed.y + '万円 (ROI: 1400%)';
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 1500,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '万円';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
