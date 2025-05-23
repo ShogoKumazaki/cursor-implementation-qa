@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発効率アップで時間とコストを最適化</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .highlight-box {
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid #2563eb;
+        }
+        .comparison-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .comparison-card.browser {
+            border-left: 4px solid #ef4444;
+        }
+        .comparison-card.cursor {
+            border-left: 4px solid #10b981;
+        }
+        .limitation-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: white;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-right: 1rem;
+            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.5);
+        }
+        .solution-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-right: 1rem;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex flex-col justify-between">
+        <!-- Header Bar -->
+        <div class="w-full h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col px-16 py-10 z-10 flex-grow">
+            <!-- Title -->
+            <h1 class="text-4xl font-bold mb-4 title-gradient">
+                ブラウザで使うChatGPTでは開発効率化に限界がある理由
+            </h1>
+
+            <!-- Main content -->
+            <div class="grid grid-cols-2 gap-8 mt-4">
+                <!-- Left Column: ChatGPT Limitations -->
+                <div class="flex flex-col space-y-5">
+                    <div class="comparison-card browser bg-white p-5 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="limitation-icon">
+                                <i class="fas fa-search-minus"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">1. 全体像が見えない問題</h3>
+                                <p class="text-gray-600 mt-1">コードの一部分しか見られず、文脈が理解できない</p>
+                                <p class="text-sm text-gray-500 mt-2">
+                                    <i class="fas fa-quote-left text-red-300 mr-1"></i>
+                                    小説の一ページだけを渡して「結末を考えて」と頼むようなもの
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card browser bg-white p-5 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="limitation-icon">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">2. 複数箇所の同時変更ができない</h3>
+                                <p class="text-gray-600 mt-1">関連ファイルを一括修正できないため作業が煩雑に</p>
+                                <p class="text-sm text-gray-500 mt-2">
+                                    <i class="fas fa-quote-left text-red-300 mr-1"></i>
+                                    各変更を手動で適用するため、時間が何倍にも増加
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card browser bg-white p-5 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="limitation-icon">
+                                <i class="fas fa-random"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">3. 開発に特化した指示ができない</h3>
+                                <p class="text-gray-600 mt-1">汎用AI では専門的な開発タスクに対応できない</p>
+                                <p class="text-sm text-gray-500 mt-2">
+                                    <i class="fas fa-quote-left text-red-300 mr-1"></i>
+                                    万能選手より、その分野の「専門家」に相談した方が的確
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card browser bg-white p-5 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="limitation-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">4. 実行と確認の一貫性がない</h3>
+                                <p class="text-gray-600 mt-1">提案内容が実際に動作するか検証が別工程</p>
+                                <p class="text-sm text-gray-500 mt-2">
+                                    <i class="fas fa-quote-left text-red-300 mr-1"></i>
+                                    設計図を描くだけで実際の建築確認までしない状態
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Cursor Solutions -->
+                <div class="flex flex-col">
+                    <div class="highlight-box p-4 rounded-lg mb-6">
+                        <h2 class="text-2xl font-semibold text-gray-800">
+                            Cursor はこれらの問題を<span class="text-green-600 font-bold">すべて解決</span>します
+                        </h2>
+                    </div>
+
+                    <div class="grid grid-rows-2 gap-6 h-full">
+                        <!-- Top visualization -->
+                        <div class="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-300"></div>
+                            <h3 class="text-xl font-bold text-gray-700 mb-3">ChatGPT vs Cursor のワークフロー</h3>
+
+                            <div class="flex flex-col space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-1 pr-4">
+                                        <div class="text-lg font-bold text-red-600 mb-2">ブラウザのChatGPT</div>
+                                        <div class="bg-gray-100 rounded-lg p-3">
+                                            <ol class="list-decimal pl-6 text-gray-600">
+                                                <li>ソースコードから該当箇所をコピペ</li>
+                                                <li>開発環境の状況や文脈を説明</li>
+                                                <li>出力内容の正確性を確認</li>
+                                                <li>エディタに切り替えてコード修正</li>
+                                                <li>動作確認</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="text-4xl text-gray-300">→</div>
+                                    <div class="flex-1 pl-4">
+                                        <div class="text-lg font-bold text-green-600 mb-2">Cursor</div>
+                                        <div class="bg-gray-100 rounded-lg p-3">
+                                            <ol class="list-decimal pl-6 text-gray-600">
+                                                <li>「ここをこうして」と直接指示</li>
+                                                <li>開発環境全体を理解して修正実施</li>
+                                                <li>動作確認</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom benefits -->
+                        <div class="comparison-card cursor bg-white rounded-lg shadow-lg" style="padding: 1.5rem 1.5rem 1rem 1.5rem;">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-green-300"></div>
+                            <h3 class="text-xl font-bold text-gray-700 mb-4">Cursorならではの解決策</h3>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="flex items-start">
+                                    <div class="solution-icon text-3xl">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">プロジェクト全体を理解</h4>
+                                        <p class="text-sm text-gray-600">コードの関連性を把握した適切な提案</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="solution-icon text-3xl">
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">複数ファイル同時修正</h4>
+                                        <p class="text-sm text-gray-600">関連する変更を一度に適用可能</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="solution-icon text-3xl">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">開発特化AI プロンプト</h4>
+                                        <p class="text-sm text-gray-600">コード専用の知識と指示体系</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="solution-icon text-3xl">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">実行確認の一貫性</h4>
+                                        <p class="text-sm text-gray-600">提案と検証を一連のフローで実施</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="w-full p-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
+            <div class="text-gray-500"></div>
+            <div class="text-gray-500">5 / 12</div>
+        </div>
+    </div>
+</body>
+</html>

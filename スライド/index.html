@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発効率アップで時間とコストを最適化</title>
+
+    <!-- ファビコン -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+
+    <!-- フォント -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-frame {
+            /* 画面の縦幅100%を利用し、アスペクト比16:9を維持 */
+            height: 100vh;
+            width: calc(100vh * 16 / 9); /* 16:9のアスペクト比 */
+            max-width: 100vw; /* 画面幅を超えないように制限 */
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            background: white;
+            display: none;
+        }
+
+        .slide-frame.active {
+            display: block;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 25px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-button:disabled:hover {
+            background: transparent;
+            transform: none;
+        }
+
+        .slide-counter {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fullscreen-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 18px;
+            z-index: 999;
+        }
+
+        .loading i {
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* キーボードショートカットの説明 */
+        .help {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .help.show {
+            opacity: 1;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 1300px) {
+            .slide-frame {
+                width: 95vw;
+                height: calc(95vw * 0.5625); /* 16:9 比率を維持 */
+                max-height: 90vh;
+            }
+        }
+
+        /* 画面が縦長の場合は横幅基準に切り替え */
+        @media (max-aspect-ratio: 16/9) {
+            .slide-frame {
+                width: 100vw;
+                height: calc(100vw * 9 / 16);
+                max-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="loading" id="loading">
+            <i class="fas fa-spinner"></i>読み込み中...
+        </div>
+
+        <!-- スライドフレーム -->
+        <iframe class="slide-frame active" id="slide-1" src="1.html"></iframe>
+        <iframe class="slide-frame" id="slide-2" src="2.html"></iframe>
+        <iframe class="slide-frame" id="slide-3" src="3.html"></iframe>
+        <iframe class="slide-frame" id="slide-4" src="4.html"></iframe>
+        <iframe class="slide-frame" id="slide-5" src="5.html"></iframe>
+        <iframe class="slide-frame" id="slide-6" src="6.html"></iframe>
+        <iframe class="slide-frame" id="slide-7" src="7.html"></iframe>
+        <iframe class="slide-frame" id="slide-8" src="8.html"></iframe>
+        <iframe class="slide-frame" id="slide-9" src="9.html"></iframe>
+        <iframe class="slide-frame" id="slide-10" src="10.html"></iframe>
+        <iframe class="slide-frame" id="slide-11" src="11.html"></iframe>
+        <iframe class="slide-frame" id="slide-12" src="12.html"></iframe>
+    </div>
+
+    <!-- プログレスバー -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- フルスクリーンボタン -->
+    <button class="fullscreen-button" id="fullscreenBtn" title="フルスクリーン">
+        <i class="fas fa-expand"></i>
+    </button>
+
+    <!-- ナビゲーション -->
+    <div class="navigation">
+        <button class="nav-button" id="prevBtn" title="前のスライド (←)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="slide-counter" id="slideCounter">1 / 12</div>
+        <button class="nav-button" id="nextBtn" title="次のスライド (→)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- ヘルプ -->
+    <div class="help" id="help">
+        ← → : スライド移動 | F : フルスクリーン | ? : ヘルプ
+    </div>
+
+    <script src="js/presentation.js"></script>
+</body>
+</html>

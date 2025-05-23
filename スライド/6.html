@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発効率アップで時間とコストを最適化</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .security-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .security-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        .risk-icon {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: white;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 2rem;
+            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+        }
+        .solution-icon {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 2rem;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+        }
+        50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        </style>
+</head>
+<body>
+    <div class="slide-container flex flex-col justify-between">
+        <!-- Header Bar -->
+        <div class="w-full h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col px-16 py-10 z-10 flex-grow">
+            <!-- Title with Security Shield Icon -->
+            <div class="flex items-center mb-6">
+                <div class=" mr-4">
+                    <i class="fas fa-shield-alt text-5xl text-blue-600"></i>
+                </div>
+                <h1 class="text-4xl font-bold title-gradient">
+                    Cursor導入の信頼性：セキュリティ対策
+                </h1>
+            </div>
+
+            <!-- Security Concerns and Solutions -->
+            <div class="grid grid-cols-3 gap-6 mt-4">
+                <!-- Risk 1 -->
+                <div class="security-card">
+                    <div class="bg-red-50 p-4 border-b border-red-100">
+                        <div class="flex items-center">
+                            <div class="risk-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 ml-4">
+                                AIモデルの学習に<br>コードが利用されるリスク
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="solution-icon flex-shrink-0">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-800">対策:</h4>
+                                    <ul class="text-gray-600 list-disc pl-5 mt-2">
+                                        <li>プライバシーモードの組織全体での強制有効化</li>
+                                        <li>問い合わせ内容はAI側にデータとして残らない</li>
+                                        <li>将来のAIモデルの学習対象にも一切利用されない</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk 2 -->
+                <div class="security-card">
+                    <div class="bg-red-50 p-4 border-b border-red-100">
+                        <div class="flex items-center">
+                            <div class="risk-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 ml-4">
+                                情報漏洩のリスク
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="solution-icon flex-shrink-0">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-800">対策:</h4>
+                                    <ul class="text-gray-600 list-disc pl-5 mt-2">
+                                        <li>機密ファイル・フォルダの除外設定が可能</li>
+                                        <li>データは残留せず、通信は暗号化</li>
+                                        <li>顧客データは暗号化DBに保存され、Cursorからアクセス不可</li>
+                                        <li>開発環境と本番環境の分離</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk 3 -->
+                <div class="security-card">
+                    <div class="bg-red-50 p-4 border-b border-red-100">
+                        <div class="flex items-center">
+                            <div class="risk-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 ml-4">
+                                マルウェアを<br>インストールされるリスク
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="solution-icon flex-shrink-0">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-800">対策:</h4>
+                                    <ul class="text-gray-600 list-disc pl-5 mt-2">
+                                        <li>AIの提案コードは必ず開発者が確認して実行</li>
+                                        <li>提案ライブラリは脆弱性データベースで確認</li>
+                                        <li>未知コードはサンドボックス環境で検証</li>
+                                        <li>承認済みライブラリリストに準拠</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom summary -->
+            <div class="mt-10 bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    セキュリティ対策のまとめ
+                </h3>
+                <p class="text-gray-700">
+                    これらの<span class="font-bold">多層的なセキュリティ対策</span>により、AIの利便性を享受しながらも、
+                    企業の機密情報や顧客データを確実に保護することが可能です。最終的な判断は常に人間が行い、
+                    AIによる提案の採用には常に開発者の確認が必要です。
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="w-full p-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
+            <div class="text-gray-500"></div>
+            <div class="text-gray-500">6 / 12</div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

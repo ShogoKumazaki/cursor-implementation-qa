@@ -1,0 +1,178 @@
+/* Custom styles for RevealJS presentation - preserving original HTML appearance */
+
+/* Original slide-specific styles preservation */
+.slide-container {
+    width: 1280px !important;
+    height: 720px !important;
+    margin: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background-color: white !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+/* Original title gradients and typography */
+.title-gradient {
+    background: linear-gradient(90deg, #2563eb, #3b82f6) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.highlight-box,
+.subtitle-box {
+    background: rgba(37, 99, 235, 0.08) !important;
+    border-left: 4px solid #2563eb !important;
+}
+
+/* Original card effects */
+.feature-card,
+.stat-card {
+    transition: all 0.3s ease !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.feature-card:hover,
+.stat-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Chart containers */
+.chart-container {
+    position: relative !important;
+    height: 250px !important;
+    width: 100% !important;
+}
+
+/* Cursor logo styling */
+.cursor-logo {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+    color: white !important;
+    width: 64px !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    font-size: 2.5rem !important;
+    margin-right: 1rem !important;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite !important;
+}
+
+/* Badge styling */
+.users-badge {
+    background: linear-gradient(90deg, #10b981, #059669) !important;
+    color: white !important;
+    border-radius: 9999px !important;
+    padding: 0.5rem 1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-weight: bold !important;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.5) !important;
+}
+
+/* Icon containers */
+.icon-container {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    opacity: 0.05 !important;
+}
+
+.icon-container i {
+    position: absolute !important;
+    font-size: 6rem !important;
+    color: #3b82f6 !important;
+}
+
+/* RevealJS specific overrides to maintain original layout */
+.reveal .slides section {
+    text-align: left !important;
+}
+
+.reveal .slides section > .slide-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+/* Ensure Tailwind classes work properly */
+.reveal .slides section * {
+    box-sizing: border-box !important;
+}
+
+/* Progress bar styling */
+.reveal .progress {
+    color: #3b82f6 !important;
+    height: 4px !important;
+}
+
+/* Slide number styling */
+.reveal .slide-number {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    color: white !important;
+    padding: 3px 8px !important;
+    border-radius: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+}
+
+/* Navigation controls */
+.reveal .controls {
+    color: #3b82f6 !important;
+}
+
+/* Ensure all original measurements are preserved */
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6 {
+    margin: inherit !important;
+    padding: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    text-align: inherit !important;
+    color: inherit !important;
+}
+
+/* Preserve all spacing and layout */
+.reveal .slides section p,
+.reveal .slides section div,
+.reveal .slides section span {
+    margin: inherit !important;
+    padding: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    text-align: inherit !important;
+    color: inherit !important;
+}
+
+/* Ensure Flexbox and Grid layouts work correctly */
+.reveal .slides section .flex,
+.reveal .slides section .grid {
+    display: flex !important;
+}
+
+.reveal .slides section .grid {
+    display: grid !important;
+}

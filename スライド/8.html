@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発効率アップで時間とコストを最適化</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cost-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cost-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        .roi-highlight {
+            animation: pulse 2s infinite;
+        }
+        50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .number-counter {
+            display: inline-block;
+            font-weight: bold;
+        }
+        to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .chart-container {
+            height: 260px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex flex-col justify-between">
+        <!-- Header Bar -->
+        <div class="w-full h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col px-16 py-10 z-10 flex-grow">
+            <!-- Title with ROI icon -->
+            <div class="flex items-center mb-8">
+                <div class="mr-4 text-5xl text-green-500">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h1 class="text-4xl font-bold title-gradient">
+                    費用対効果（ROI）：年間300万円以上のコスト削減
+                </h1>
+            </div>
+
+            <!-- Two Column Layout: Cost & ROI -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Left Column: Cost Details -->
+                <div class="cost-card bg-white">
+                    <div class="bg-blue-600 p-5 text-white">
+                        <div class="flex items-center">
+                            <div class="text-4xl mr-3">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold">導入コスト</h2>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl mr-4">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">1ユーザーあたり</h3>
+                                <div class="text-xl font-bold text-blue-700">
+                                    40ドル/月（約<span class="text-2xl">6,000</span>円/月）
+                                </div>
+                                <div class="text-gray-600">年間<span class="text-xl font-bold">72,000</span>円/ユーザー</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl mr-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">14名のチーム全体</h3>
+                                <div class="text-3xl font-bold text-blue-700">
+                                    年間<span id="totalCost">1,008,000</span>円
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-green-50 rounded-lg border-l-4 border-green-500">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xl mr-4">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">個々のライセンスの採算性</h3>
+                                <p class="text-gray-700">1日わずか<span class="font-bold text-green-600">5分の時間短縮</span>でコスト回収可能</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: ROI Chart -->
+                <div class="cost-card bg-white">
+                    <div class="bg-green-600 p-5 text-white">
+                        <div class="flex items-center">
+                            <div class="text-4xl mr-3">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold">投資収益率（ROI）</h2>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="chart-container">
+                            <canvas id="roiChart"></canvas>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="p-3 bg-blue-50 rounded-lg">
+                                <h3 class="text-lg font-bold text-gray-800">保守的な試算</h3>
+                                <div class="text-xl">開発者一人あたり<span class="font-bold">1日30分削減</span></div>
+                                <div class="text-3xl font-bold text-blue-700">ROI <span class="roi-highlight">316%</span></div>
+                            </div>
+                            <div class="p-3 bg-green-50 rounded-lg">
+                                <h3 class="text-lg font-bold text-gray-800">積極的な試算</h3>
+                                <div class="text-xl">開発時間<span class="font-bold">20%削減</span></div>
+                                <div class="text-3xl font-bold text-green-700">ROI <span class="roi-highlight">1400%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary box -->
+            <div class="mt-8 p-5 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                    ROIの意味するもの
+                </h3>
+                <p class="text-gray-700 mt-2">
+                    保守的な試算でさえ、<span class="font-bold text-blue-700">初期投資額の3倍以上のリターン</span>が期待できます。積極的な試算では、
+                    <span class="font-bold text-green-700">年間1,400万円以上のコスト削減</span>が見込まれ、開発効率の大幅な向上だけでなく、
+                    創造的業務への時間シフト、バグ修正コストの削減、開発者の満足度向上など、定量化しづらい付加価値も期待できます。
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="w-full p-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
+            <div class="text-gray-500"></div>
+            <div class="text-gray-500">8 / 12</div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

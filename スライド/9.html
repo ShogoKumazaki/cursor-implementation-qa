@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発効率アップで時間とコストを最適化</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-step {
+            position: relative;
+        }
+        .timeline-step::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #3b82f6;
+            top: 24px;
+            bottom: -20px;
+            left: 15px;
+            z-index: 1;
+        }
+        .timeline-step:last-child::after {
+            display: none;
+        }
+        .timeline-dot {
+            position: relative;
+            z-index: 2;
+        }
+        .kpi-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        .member-chip {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+        to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        </style>
+</head>
+<body>
+    <div class="slide-container flex flex-col justify-between">
+        <!-- Header Bar -->
+        <div class="w-full h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col px-16 py-10 z-10 flex-grow">
+            <!-- Title with Program icon -->
+            <div class="flex items-center mb-6">
+                <div class="mr-4 text-5xl text-blue-500">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h1 class="text-4xl font-bold title-gradient">
+                    導入計画（12週間プログラム）
+                </h1>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="grid grid-cols-5 gap-6">
+                <!-- Left Column: Participants and Timeline -->
+                <div class="col-span-2">
+                    <!-- Participants Card -->
+                    <div class="kpi-card bg-white mb-6">
+                        <div class="bg-blue-600 p-4 text-white">
+                            <div class="flex items-center">
+                                <div class="text-3xl mr-3">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h2 class="text-xl font-bold">参加対象者</h2>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <div class="flex items-center">
+                                <span class="text-2xl font-bold text-blue-700">14名</span>
+                                <span class="ml-2 text-gray-700">全開発メンバー</span>
+                            </div>
+
+                            <h3 class="text-md font-bold text-gray-700">メンバー構成の特徴</h3>
+                            <div class="flex flex-wrap">
+                                <span class="member-chip bg-blue-500">ベテラン層</span>
+                                <span class="member-chip bg-blue-400">中堅層</span>
+                                <span class="member-chip bg-blue-300">若手層</span>
+                                <span class="member-chip bg-green-500">AIスキル高</span>
+                                <span class="member-chip bg-yellow-500">AI初心者</span>
+                                <span class="member-chip bg-purple-500">複数プロジェクト</span>
+                            </div>
+
+                            <div class="bg-blue-50 p-3 rounded-lg border-l-2 border-blue-500 mt-3">
+                                <p class="text-sm text-gray-700">
+                                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                    様々な経験値・スキルレベル・プロジェクト環境のメンバーが参加することで、
+                                    <span class="font-bold">多角的な評価</span>が可能になります。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="kpi-card bg-white">
+                        <div class="bg-blue-500 p-4 text-white">
+                            <div class="flex items-center">
+                                <div class="text-3xl mr-3">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <h2 class="text-xl font-bold">12週間タイムライン</h2>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <!-- Timeline Step 1 -->
+                            <div class="timeline-step pl-10 relative pb-5">
+                                <div class="timeline-dot absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-800">Week 1-2: 導入・基本トレーニング</h3>
+                                <p class="text-sm text-gray-600">ツール設定、基本操作習得</p>
+                            </div>
+
+                            <!-- Timeline Step 2 -->
+                            <div class="timeline-step pl-10 relative pb-5">
+                                <div class="timeline-dot absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-800">Week 3-6: 活用拡大・事例共有</h3>
+                                <p class="text-sm text-gray-600">週次ショー＆テル、バディ制度開始</p>
+                            </div>
+
+                            <!-- Timeline Step 3 -->
+                            <div class="timeline-step pl-10 relative pb-5">
+                                <div class="timeline-dot absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-400 flex items-center justify-center text-white">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-800">Week 7-10: 効果測定・最適化</h3>
+                                <p class="text-sm text-gray-600">中間評価と活用方法の最適化</p>
+                            </div>
+
+                            <!-- Timeline Step 4 -->
+                            <div class="timeline-step pl-10 relative">
+                                <div class="timeline-dot absolute left-0 top-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white">
+                                    <i class="fas fa-flag-checkered"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-800">Week 11-12: 結果検証・報告</h3>
+                                <p class="text-sm text-gray-600">最終評価と本格導入計画策定</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: KPIs -->
+                <div class="col-span-3">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-bullseye text-red-500 mr-2"></i>
+                        主要KPI：効果測定の明確化
+                    </h2>
+
+                    <!-- KPI Cards -->
+                    <div class="space-y-5">
+                        <!-- KPI Card 1 -->
+                        <div class="kpi-card bg-white">
+                            <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-4 text-white">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-3">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-lg opacity-75">KPI 1:</span>
+                                        <h3 class="text-xl font-bold">時短率（効率化効果）</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-5 flex">
+                                <div class="w-1/4 flex flex-col items-center justify-center text-center px-3 border-r border-gray-200">
+                                    <div class="text-4xl text-blue-600 mb-2">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <p class="text-sm font-bold text-gray-800">開発タスクの時間短縮度</p>
+                                </div>
+                                <div class="w-3/4 pl-5">
+                                    <p class="text-gray-700">
+                                        代表的な開発タスク（新規機能の雛形作成、バグ修正、ドキュメント生成など）の作業時間を測定
+                                    </p>
+                                    <div class="mt-3 flex items-center bg-blue-50 p-2 rounded-lg">
+                                        <div class="text-blue-500 text-xl mr-2">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                        <p class="text-sm text-gray-700">
+                                            <span class="font-bold">評価方法：</span>
+                                            開発メンバーへのヒアリングを通じて、Cursor導入前後での作業効率の変化を定性的に評価
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI Card 2 -->
+                        <div class="kpi-card bg-white">
+                            <div class="bg-gradient-to-r from-green-600 to-green-500 p-4 text-white">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-3">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-lg opacity-75">KPI 2:</span>
+                                        <h3 class="text-xl font-bold">利用率（浸透度）</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-5 flex">
+                                <div class="w-1/4 flex flex-col items-center justify-center text-center px-3 border-r border-gray-200">
+                                    <div class="text-4xl text-green-600 mb-2">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <p class="text-sm font-bold text-gray-800">ツール活用の頻度と範囲</p>
+                                </div>
+                                <div class="w-3/4 pl-5">
+                                    <p class="text-gray-700">
+                                        Cursorの管理画面やAPIリクエスト回数のログから、各メンバーの活用状況を定量的に把握
+                                    </p>
+                                    <div class="mt-3 flex items-center bg-green-50 p-2 rounded-lg">
+                                        <div class="text-green-500 text-xl mr-2">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                        <p class="text-sm text-gray-700">
+                                            <span class="font-bold">評価方法：</span>
+                                            一日あたりのAPI呼び出し回数から利用頻度を客観的に測定し、ツールの浸透度を評価
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI Card 3 -->
+                        <div class="kpi-card bg-white">
+                            <div class="bg-gradient-to-r from-red-600 to-red-500 p-4 text-white">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-3">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-lg opacity-75">KPI 3:</span>
+                                        <h3 class="text-xl font-bold">インシデントゼロ（安全性）</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-5 flex">
+                                <div class="w-1/4 flex flex-col items-center justify-center text-center px-3 border-r border-gray-200">
+                                    <div class="text-4xl text-red-600 mb-2">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <p class="text-sm font-bold text-gray-800">セキュリティと品質保証</p>
+                                </div>
+                                <div class="w-3/4 pl-5">
+                                    <p class="text-gray-700">
+                                        セキュリティインシデント（情報漏洩疑いなど）や、AI利用に起因する重大な品質問題の発生件数
+                                    </p>
+                                    <div class="mt-3 flex items-center bg-red-50 p-2 rounded-lg">
+                                        <div class="text-red-500 text-xl mr-2">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <p class="text-sm text-gray-700">
+                                            <span class="font-bold">目標：</span>
+                                            AI生成コードによる大規模障害など、重大インシデントの発生件数を<span class="font-bold text-red-600">ゼロ</span>に抑える
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support System -->
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-lg font-bold text-gray-800 flex items-center mb-2">
+                    <i class="fas fa-life-ring text-blue-500 mr-2"></i>
+                    サポート体制と教育プログラム
+                </h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="flex items-center">
+                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-2">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <span class="text-sm text-gray-700">キックオフトレーニング</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-2">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <span class="text-sm text-gray-700">週次ショー＆テル（事例共有会）</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-2">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <span class="text-sm text-gray-700">バディ制度（相互学習支援）</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="w-full p-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
+            <div class="text-gray-500"></div>
+            <div class="text-gray-500">9 / 12</div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
