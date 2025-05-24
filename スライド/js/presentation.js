@@ -1,7 +1,7 @@
 class IframePresentationController {
     constructor() {
         this.currentSlide = 1;
-        this.totalSlides = 12;
+        this.totalSlides = 14;
         this.slides = [];
         this.isLoading = true;
 
@@ -25,16 +25,36 @@ class IframePresentationController {
         this.help = document.getElementById('help');
         this.loading = document.getElementById('loading');
 
+        // デバッグ: 要素が正しく取得できているかチェック
+        console.log('Navigation buttons:', {
+            prevBtn: this.prevBtn,
+            nextBtn: this.nextBtn,
+            slideCounter: this.slideCounter
+        });
+
         // iframeの配列を取得
         for (let i = 1; i <= this.totalSlides; i++) {
-            this.slides.push(document.getElementById(`slide-${i}`));
+            const slide = document.getElementById(`slide-${i}`);
+            if (slide) {
+                this.slides.push(slide);
+            } else {
+                console.warn(`Slide ${i} not found`);
+            }
         }
+
+        console.log(`Total slides loaded: ${this.slides.length}`);
     }
 
     setupEventListeners() {
         // ナビゲーションボタン
-        this.prevBtn.addEventListener('click', () => this.previousSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        this.prevBtn.addEventListener('click', () => {
+            console.log('Previous button clicked');
+            this.previousSlide();
+        });
+        this.nextBtn.addEventListener('click', () => {
+            console.log('Next button clicked');
+            this.nextSlide();
+        });
 
         // フルスクリーンボタン
         this.fullscreenBtn.addEventListener('click', () => this.toggleFullscreen());
@@ -156,8 +176,11 @@ class IframePresentationController {
 
     goToSlide(slideNumber, updateURL = true) {
         if (slideNumber < 1 || slideNumber > this.totalSlides || slideNumber === this.currentSlide) {
+            console.log(`Invalid slide number: ${slideNumber} (current: ${this.currentSlide})`);
             return;
         }
+
+        console.log(`Changing from slide ${this.currentSlide} to slide ${slideNumber}`);
 
         // 現在のスライドを隠す
         this.slides[this.currentSlide - 1].classList.remove('active');
@@ -253,6 +276,8 @@ class IframePresentationController {
 
 // アプリケーション初期化
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing presentation...');
+
     const presentation = new IframePresentationController();
 
     // グローバルアクセス用（デバッグや外部制御用）
@@ -263,5 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
         presentation.updateUI();
     });
 
-    console.log('Iframe Presentation initialized');
+    console.log('Iframe Presentation initialized successfully');
+    console.log('Use arrow keys (← →) or navigation buttons to control slides');
 });

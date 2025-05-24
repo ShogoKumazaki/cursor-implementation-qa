@@ -67,15 +67,15 @@
         }
 
         .nav-button {
-            background: transparent;
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             color: white;
             font-size: 18px;
             cursor: pointer;
             padding: 8px;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,8 +83,15 @@
         }
 
         .nav-button:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-button:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.4);
         }
 
         .nav-button:disabled {
@@ -206,14 +213,16 @@
         <iframe class="slide-frame" id="slide-2" src="2.html"></iframe>
         <iframe class="slide-frame" id="slide-3" src="3.html"></iframe>
         <iframe class="slide-frame" id="slide-4" src="4.html"></iframe>
-        <iframe class="slide-frame" id="slide-5" src="5.html"></iframe>
-        <iframe class="slide-frame" id="slide-6" src="6.html"></iframe>
-        <iframe class="slide-frame" id="slide-7" src="7.html"></iframe>
-        <iframe class="slide-frame" id="slide-8" src="8.html"></iframe>
-        <iframe class="slide-frame" id="slide-9" src="9.html"></iframe>
-        <iframe class="slide-frame" id="slide-10" src="10.html"></iframe>
-        <iframe class="slide-frame" id="slide-11" src="11.html"></iframe>
-        <iframe class="slide-frame" id="slide-12" src="12.html"></iframe>
+        <iframe class="slide-frame" id="slide-5" src="4a.html"></iframe>
+        <iframe class="slide-frame" id="slide-6" src="4b.html"></iframe>
+        <iframe class="slide-frame" id="slide-7" src="5.html"></iframe>
+        <iframe class="slide-frame" id="slide-8" src="6.html"></iframe>
+        <iframe class="slide-frame" id="slide-9" src="7.html"></iframe>
+        <iframe class="slide-frame" id="slide-10" src="8.html"></iframe>
+        <iframe class="slide-frame" id="slide-11" src="9.html"></iframe>
+        <iframe class="slide-frame" id="slide-12" src="10.html"></iframe>
+        <iframe class="slide-frame" id="slide-13" src="11.html"></iframe>
+        <iframe class="slide-frame" id="slide-14" src="12.html"></iframe>
     </div>
 
     <!-- プログレスバー -->
@@ -229,7 +238,7 @@
         <button class="nav-button" id="prevBtn" title="前のスライド (←)">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <div class="slide-counter" id="slideCounter">1 / 12</div>
+        <div class="slide-counter" id="slideCounter">1 / 14</div>
         <button class="nav-button" id="nextBtn" title="次のスライド (→)">
             <i class="fas fa-chevron-right"></i>
         </button>
