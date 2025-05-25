@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発効率アップで時間とコストを最適化</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            margin: 3rem 0;
+        }
+        .quality-security-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            min-width: 300px;
+        }
+        .quality-security-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        .quality-card {
+            border-color: #10b981;
+        }
+        .security-card {
+            border-color: #f59e0b;
+        }
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        .quality-icon {
+            color: #10b981;
+        }
+        .security-icon {
+            color: #f59e0b;
+        }
+        .card-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .card-description {
+            font-size: 1.1rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        .highlight-text {
+            background: rgba(37, 99, 235, 0.1);
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex flex-col justify-between">
+        <!-- Header Bar -->
+        <div class="w-full h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col px-16 py-10 z-10 flex-grow">
+            <!-- Title -->
+            <h1 class="text-4xl font-bold mb-8 title-gradient text-center">
+                AIを活用した開発で重要な2つの要素
+            </h1>
+
+            <!-- Highlight Message -->
+            <div class="highlight-text text-center">
+                <p class="text-xl font-semibold text-gray-800">
+                    AIを活用した開発では、<br>
+                    <span class="text-blue-600 text-2xl font-bold">品質</span>と<span class="text-amber-500 text-2xl font-bold">セキュリティ</span>が特に重要です
+                </p>
+            </div>
+
+            <!-- Quality and Security Cards -->
+            <div class="icon-container flex-grow flex items-center">
+                <!-- Quality Card -->
+                <div class="quality-security-card quality-card">
+                    <div class="card-icon quality-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="card-title text-green-600">品質</h3>
+                    <p class="card-description">
+                        AIが生成したコードの<br>
+                        正確性と信頼性を<br>
+                        確保する必要があります
+                    </p>
+                </div>
+
+                <!-- Security Card -->
+                <div class="quality-security-card security-card">
+                    <div class="card-icon security-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title text-amber-600">セキュリティ</h3>
+                    <p class="card-description">
+                        機密情報の保護と<br>
+                        セキュアな開発プロセスの<br>
+                        維持が不可欠です
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="w-full p-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
+            <div class="text-gray-500"></div>
+            <div class="text-gray-500">8 / 16</div>
+        </div>
+    </div>
+</body>
+</html> 

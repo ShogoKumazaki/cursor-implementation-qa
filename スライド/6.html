@@ -28,40 +28,32 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .security-card {
+        .quality-card {
             transition: all 0.3s ease;
-            border-radius: 8px;
             background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             overflow: hidden;
         }
-        .security-card:hover {
+        .quality-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.1);
         }
-        .risk-icon {
-            background: linear-gradient(135deg, #dc2626, #ef4444);
-            color: white;
-            width: 64px;
-            height: 64px;
+        .card-icon {
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            border-radius: 50%;
             font-size: 2rem;
-            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
-        }
-        .solution-icon {
-            background: linear-gradient(135deg, #059669, #10b981);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
-            width: 64px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 2rem;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        .analogy {
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            border-left: 4px solid #3b82f6;
         }
     </style>
 </head>
@@ -72,124 +64,156 @@
 
         <!-- Main Content -->
         <div class="flex flex-col px-16 py-10 z-10 flex-grow">
-            <!-- Title with Security Shield Icon -->
-            <div class="flex items-center mb-6">
-                <div class=" mr-4">
-                    <i class="fas fa-shield-alt text-5xl text-blue-600"></i>
+            <!-- Title -->
+            <h1 class="text-4xl font-bold mb-2 title-gradient">
+                AIが書くコードは安心して使えるの？—品質への不安を解消
+            </h1>
+            <p class="text-lg text-gray-600 mb-8">
+                Cursorを安心して活用するための4つの重要ポイント
+            </p>
+
+            <!-- Main content: 4 cards grid -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Card 1 - コードの説明書きを自動生成 -->
+                <div class="quality-card shadow-md">
+                    <div class="bg-blue-50 p-5">
+                        <div class="flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">
+                                1. コードの説明書きを自動生成
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>AIがコードの内容を分かりやすく説明してくれる</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>コードレビューの効率化と理解の促進</span>
+                            </li>
+                        </ul>
+                        <div class="analogy p-3 mt-3 rounded-lg">
+                            <p class="text-gray-600 text-sm italic">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                複雑な装置に詳細な取扱説明書が付いているようなもの
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="text-4xl font-bold title-gradient">
-                    Cursor導入の信頼性：セキュリティ対策
-                </h1>
+
+                <!-- Card 2 - 動作確認用のプログラムも自動生成 -->
+                <div class="quality-card shadow-md">
+                    <div class="bg-blue-50 p-5">
+                        <div class="flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">
+                                2. 動作確認用のプログラムも自動生成
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>新機能と一緒にテストプログラムも自動で作成</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>特殊な条件でも動作するか確認可能で安心感向上</span>
+                            </li>
+                        </ul>
+                        <div class="analogy p-3 mt-3 rounded-lg">
+                            <p class="text-gray-600 text-sm italic">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                新しい家電を買ったとき、すべての機能が正常に動くか確認するようなもの
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 - チーム全体でAIの使い方を統一 -->
+                <div class="quality-card shadow-md">
+                    <div class="bg-blue-50 p-5">
+                        <div class="flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">
+                                3. チーム全体でAIの使い方を統一
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>「皆で同じルールでAIを使う」ための機能を提供</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>ガイドラインによる品質のバラつき防止</span>
+                            </li>
+                        </ul>
+                        <div class="analogy p-3 mt-3 rounded-lg">
+                            <p class="text-gray-600 text-sm italic">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                文書作成ルールのように、全員が同じ基準でAIを活用
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 - 最終判断は人間が行う仕組み -->
+                <div class="quality-card shadow-md">
+                    <div class="bg-blue-50 p-5">
+                        <div class="flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">
+                                4. 最終判断は人間が行う仕組み
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>AIはアイデアを提案するだけ、採用は人間が判断</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>テストや動作確認などの開発手順は変わらない</span>
+                            </li>
+                        </ul>
+                        <div class="analogy p-3 mt-3 rounded-lg">
+                            <p class="text-gray-600 text-sm italic">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                シェフの助手がレシピを提案しても、最終的な味の決定権はシェフにある
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Security Concerns and Solutions -->
-            <div class="grid grid-cols-3 gap-6 mt-4">
-                <!-- Risk 1 -->
-                <div class="security-card">
-                    <div class="bg-red-50 p-4 border-b border-red-100">
-                        <div class="flex items-center">
-                            <div class="risk-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800 ml-4">
-                                AIモデルの学習に<br>コードが利用されるリスク
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="flex items-start">
-                                <div class="solution-icon flex-shrink-0">
-                                    <i class="fas fa-user-shield"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">対策:</h4>
-                                    <ul class="text-gray-600 list-disc pl-5 mt-2">
-                                        <li>プライバシーモードの組織全体での強制有効化</li>
-                                        <li>問い合わせ内容はAI側にデータとして残らない</li>
-                                        <li>将来のAIモデルの学習対象にも一切利用されない</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Risk 2 -->
-                <div class="security-card">
-                    <div class="bg-red-50 p-4 border-b border-red-100">
-                        <div class="flex items-center">
-                            <div class="risk-icon">
-                                <i class="fas fa-user-secret"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800 ml-4">
-                                情報漏洩のリスク
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="flex items-start">
-                                <div class="solution-icon flex-shrink-0">
-                                    <i class="fas fa-lock"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">対策:</h4>
-                                    <ul class="text-gray-600 list-disc pl-5 mt-2">
-                                        <li>機密ファイル・フォルダの除外設定が可能</li>
-                                        <li>データは残留せず、通信は暗号化</li>
-                                        <li>顧客データは暗号化DBに保存され、Cursorからアクセス不可</li>
-                                        <li>開発環境と本番環境の分離</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Risk 3 -->
-                <div class="security-card">
-                    <div class="bg-red-50 p-4 border-b border-red-100">
-                        <div class="flex items-center">
-                            <div class="risk-icon">
-                                <i class="fas fa-bug"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800 ml-4">
-                                マルウェアを<br>インストールされるリスク
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="flex items-start">
-                                <div class="solution-icon flex-shrink-0">
-                                    <i class="fas fa-clipboard-check"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-800">対策:</h4>
-                                    <ul class="text-gray-600 list-disc pl-5 mt-2">
-                                        <li>AIの提案コードは必ず開発者が確認して実行</li>
-                                        <li>提案ライブラリは脆弱性データベースで確認</li>
-                                        <li>未知コードはサンドボックス環境で検証</li>
-                                        <li>承認済みライブラリリストに準拠</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom summary -->
-            <div class="mt-10 bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+            <!-- Summary and conclusion -->
+            <div class="mt-8 bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">
-                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                    セキュリティ対策のまとめ
+                    <i class="fas fa-robot text-blue-500 mr-2"></i>
+                    <i class="fas fa-plus text-gray-400 mx-1"></i>
+                    <i class="fas fa-user text-blue-500 mr-2"></i>
+                    <span>人間とAIの協働</span>
                 </h3>
                 <p class="text-gray-700">
-                    これらの<span class="font-bold">多層的なセキュリティ対策</span>により、AIの利便性を享受しながらも、
-                    企業の機密情報や顧客データを確実に保護することが可能です。最終的な判断は常に人間が行い、
-                    AIによる提案の採用には常に開発者の確認が必要です。
+                    Cursorは「AIに任せっきり」ではなく、<span class="font-bold">「人間とAIがそれぞれの得意分野で協力する」</span>ツールです。
+                    適切に使えば、人間だけで開発するよりも高い品質を実現できることもあります。
                 </p>
             </div>
         </div>
@@ -197,7 +221,7 @@
         <!-- Footer -->
         <div class="w-full p-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
             <div class="text-gray-500"></div>
-            <div class="text-gray-500">8 / 14</div>
+            <div class="text-gray-500">9 / 14</div>
         </div>
     </div>
 
