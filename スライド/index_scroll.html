@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発効率アップで時間とコストを最適化 - スクロール版</title>
+
+    <!-- ファビコン -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+
+    <!-- フォント -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            line-height: 1.6;
+        }
+
+        .scroll-container {
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .slide-container {
+            margin: 20px auto;
+            width: 98vw;
+            max-width: none;
+            height: 100vh;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            background: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+
+
+
+
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .slide-separator {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            margin: 30px auto;
+            width: 60%;
+            opacity: 0.3;
+        }
+
+        /* スクロールバーのスタイリング */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #2563eb, #1d4ed8);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .slide-container {
+                width: 99vw;
+                margin: 5px auto;
+                height: 100vh;
+            }
+
+            .slide-number {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+        /* 印刷対応 */
+        @media print {
+            .progress-indicator {
+                display: none;
+            }
+
+            .slide-container {
+                page-break-inside: avoid;
+                margin: 20px 0;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+
+        /* スムーススクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* アニメーション */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-container {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+
+
+    <div class="scroll-container">
+        <!-- スライド1 -->
+        <div class="slide-container" id="slide-1">
+            <div class="slide-number">1 / 16</div>
+            <iframe class="slide-frame" src="1.html" title="スライド1"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド2 -->
+        <div class="slide-container" id="slide-2">
+            <div class="slide-number">2 / 16</div>
+            <iframe class="slide-frame" src="2.html" title="スライド2"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド3 -->
+        <div class="slide-container" id="slide-3">
+            <div class="slide-number">3 / 16</div>
+            <iframe class="slide-frame" src="3.html" title="スライド3"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド4 -->
+        <div class="slide-container" id="slide-4">
+            <div class="slide-number">4 / 16</div>
+            <iframe class="slide-frame" src="4.html" title="スライド4"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド5 -->
+        <div class="slide-container" id="slide-5">
+            <div class="slide-number">5 / 16</div>
+            <iframe class="slide-frame" src="4a.html" title="スライド5"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド6 -->
+        <div class="slide-container" id="slide-6">
+            <div class="slide-number">6 / 16</div>
+            <iframe class="slide-frame" src="4b.html" title="スライド6"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド7 -->
+        <div class="slide-container" id="slide-7">
+            <div class="slide-number">7 / 16</div>
+            <iframe class="slide-frame" src="cursor_demo.html" title="スライド7"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド8 -->
+        <div class="slide-container" id="slide-8">
+            <div class="slide-number">8 / 16</div>
+            <iframe class="slide-frame" src="5.html" title="スライド8"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド9 -->
+        <div class="slide-container" id="slide-9">
+            <div class="slide-number">9 / 16</div>
+            <iframe class="slide-frame" src="quality_security.html" title="スライド9"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド10 -->
+        <div class="slide-container" id="slide-10">
+            <div class="slide-number">10 / 16</div>
+            <iframe class="slide-frame" src="6.html" title="スライド10"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド11 -->
+        <div class="slide-container" id="slide-11">
+            <div class="slide-number">11 / 16</div>
+            <iframe class="slide-frame" src="7.html" title="スライド11"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド12 -->
+        <div class="slide-container" id="slide-12">
+            <div class="slide-number">12 / 16</div>
+            <iframe class="slide-frame" src="8.html" title="スライド12"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド13 -->
+        <div class="slide-container" id="slide-13">
+            <div class="slide-number">13 / 16</div>
+            <iframe class="slide-frame" src="9.html" title="スライド13"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド14 -->
+        <div class="slide-container" id="slide-14">
+            <div class="slide-number">14 / 16</div>
+            <iframe class="slide-frame" src="10.html" title="スライド14"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド15 -->
+        <div class="slide-container" id="slide-15">
+            <div class="slide-number">15 / 16</div>
+            <iframe class="slide-frame" src="11.html" title="スライド15"></iframe>
+        </div>
+
+        <div class="slide-separator"></div>
+
+        <!-- スライド16 -->
+        <div class="slide-container" id="slide-16">
+            <div class="slide-number">16 / 16</div>
+            <iframe class="slide-frame" src="12.html" title="スライド16"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // プログレスバーの更新
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // スクロールイベントリスナー
+        window.addEventListener('scroll', updateProgressBar);
+
+                // iframeの高さを画面に合わせて調整（画面の高さに固定）
+        function adjustIframeHeight(iframe) {
+            // 画面の高さに固定（CSSで100vhに設定済みなので、追加の調整は不要）
+            // iframeは親コンテナのサイズに自動で合わせられる
+            console.log(`Slide ${iframe.title} set to full viewport height`);
+        }
+
+        // ページ読み込み時の初期化
+        window.addEventListener('load', () => {
+            updateProgressBar();
+
+            // 各iframeの読み込み完了を待つ
+            const iframes = document.querySelectorAll('.slide-frame');
+            let loadedCount = 0;
+
+            iframes.forEach((iframe, index) => {
+                iframe.addEventListener('load', () => {
+                    loadedCount++;
+                    console.log(`Slide ${index + 1} loaded (${loadedCount}/${iframes.length})`);
+
+                    // 読み込み完了後に高さを調整
+                    setTimeout(() => {
+                        adjustIframeHeight(iframe);
+                    }, 100);
+
+                    if (loadedCount === iframes.length) {
+                        console.log('All slides loaded successfully');
+
+                        // 全体のプログレスバーを再更新
+                        setTimeout(() => {
+                            updateProgressBar();
+                        }, 500);
+                    }
+                });
+            });
+        });
+
+        // キーボードショートカット
+        document.addEventListener('keydown', (e) => {
+            switch(e.code) {
+                case 'Home':
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+                    break;
+                case 'ArrowUp':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+                    }
+                    break;
+            }
+        });
+
+        // URLハッシュによる自動スクロール
+        if (window.location.hash) {
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>

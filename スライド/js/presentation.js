@@ -1,7 +1,7 @@
 class IframePresentationController {
     constructor() {
         this.currentSlide = 1;
-        this.totalSlides = 14;
+        this.totalSlides = 16; // HTMLに合わせて16に修正
         this.slides = [];
         this.isLoading = true;
 
@@ -46,20 +46,27 @@ class IframePresentationController {
     }
 
     setupEventListeners() {
-        // ナビゲーションボタン
-        this.prevBtn.addEventListener('click', () => {
-            console.log('Previous button clicked');
-            this.previousSlide();
-        });
-        this.nextBtn.addEventListener('click', () => {
-            console.log('Next button clicked');
-            this.nextSlide();
-        });
+        // ナビゲーションボタンのイベントリスナー（簡素化）
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => {
+                console.log('Previous button clicked');
+                this.previousSlide();
+            });
+        }
+
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => {
+                console.log('Next button clicked');
+                this.nextSlide();
+            });
+        }
 
         // フルスクリーンボタン
-        this.fullscreenBtn.addEventListener('click', () => this.toggleFullscreen());
+        if (this.fullscreenBtn) {
+            this.fullscreenBtn.addEventListener('click', () => this.toggleFullscreen());
+        }
 
-        // キーボードイベント
+        // キーボードイベント（シンプルに）
         document.addEventListener('keydown', (e) => this.handleKeydown(e));
 
         // ウィンドウリサイズ
@@ -86,16 +93,40 @@ class IframePresentationController {
     hideLoading() {
         // 最初のスライドが読み込まれたら loading を隠す
         const firstSlide = this.slides[0];
-        firstSlide.addEventListener('load', () => {
+        if (firstSlide) {
+            firstSlide.addEventListener('load', () => {
+                setTimeout(() => {
+                    if (this.loading) {
+                        this.loading.style.display = 'none';
+                    }
+                    this.isLoading = false;
+                    console.log('Loading completed');
+                }, 500);
+            });
+        } else {
+            // スライドが見つからない場合は即座にローディングを隠す
             setTimeout(() => {
-                this.loading.style.display = 'none';
+                if (this.loading) {
+                    this.loading.style.display = 'none';
+                }
                 this.isLoading = false;
-            }, 500);
-        });
+                console.log('Loading completed (no slides found)');
+            }, 1000);
+        }
     }
 
     handleKeydown(e) {
-        if (this.isLoading) return;
+        console.log('Key pressed:', e.code, 'isLoading:', this.isLoading);
+
+        if (this.isLoading) {
+            console.log('Still loading, ignoring key press');
+            return;
+        }
+
+        // フォーカスがinput要素にある場合はスキップ
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            return;
+        }
 
         switch(e.code) {
             case 'ArrowLeft':
@@ -125,6 +156,7 @@ class IframePresentationController {
                 break;
             case 'Escape':
                 if (document.fullscreenElement) {
+                    e.preventDefault();
                     document.exitFullscreen();
                 }
                 break;
@@ -163,31 +195,46 @@ class IframePresentationController {
     }
 
     previousSlide() {
+        console.log('previousSlide called, current:', this.currentSlide);
         if (this.currentSlide > 1) {
             this.goToSlide(this.currentSlide - 1);
+        } else {
+            console.log('Already at first slide');
         }
     }
 
     nextSlide() {
+        console.log('nextSlide called, current:', this.currentSlide, 'total:', this.totalSlides);
         if (this.currentSlide < this.totalSlides) {
             this.goToSlide(this.currentSlide + 1);
+        } else {
+            console.log('Already at last slide');
         }
     }
 
     goToSlide(slideNumber, updateURL = true) {
-        if (slideNumber < 1 || slideNumber > this.totalSlides || slideNumber === this.currentSlide) {
-            console.log(`Invalid slide number: ${slideNumber} (current: ${this.currentSlide})`);
+        if (slideNumber < 1 || slideNumber > this.totalSlides) {
+            console.log(`Invalid slide number: ${slideNumber} (valid range: 1-${this.totalSlides})`);
+            return;
+        }
+
+        if (slideNumber === this.currentSlide) {
+            console.log(`Already on slide ${slideNumber}`);
             return;
         }
 
         console.log(`Changing from slide ${this.currentSlide} to slide ${slideNumber}`);
 
         // 現在のスライドを隠す
-        this.slides[this.currentSlide - 1].classList.remove('active');
+        if (this.slides[this.currentSlide - 1]) {
+            this.slides[this.currentSlide - 1].classList.remove('active');
+        }
 
         // 新しいスライドを表示
         this.currentSlide = slideNumber;
-        this.slides[this.currentSlide - 1].classList.add('active');
+        if (this.slides[this.currentSlide - 1]) {
+            this.slides[this.currentSlide - 1].classList.add('active');
+        }
 
         // UIを更新
         this.updateUI();
@@ -204,20 +251,32 @@ class IframePresentationController {
     updateUI() {
         // プログレスバー
         const progress = (this.currentSlide / this.totalSlides) * 100;
-        this.progressBar.style.width = `${progress}%`;
+        if (this.progressBar) {
+            this.progressBar.style.width = `${progress}%`;
+        }
 
         // スライドカウンター
-        this.slideCounter.textContent = `${this.currentSlide} / ${this.totalSlides}`;
+        if (this.slideCounter) {
+            this.slideCounter.textContent = `${this.currentSlide} / ${this.totalSlides}`;
+        }
 
         // ナビゲーションボタンの状態
-        this.prevBtn.disabled = this.currentSlide === 1;
-        this.nextBtn.disabled = this.currentSlide === this.totalSlides;
+        if (this.prevBtn) {
+            this.prevBtn.disabled = this.currentSlide === 1;
+            console.log('Previous button disabled:', this.prevBtn.disabled);
+        }
+        if (this.nextBtn) {
+            this.nextBtn.disabled = this.currentSlide === this.totalSlides;
+            console.log('Next button disabled:', this.nextBtn.disabled);
+        }
 
         // フルスクリーンボタンのアイコン
-        const isFullscreen = !!document.fullscreenElement;
-        this.fullscreenBtn.innerHTML = isFullscreen
-            ? '<i class="fas fa-compress"></i>'
-            : '<i class="fas fa-expand"></i>';
+        if (this.fullscreenBtn) {
+            const isFullscreen = !!document.fullscreenElement;
+            this.fullscreenBtn.innerHTML = isFullscreen
+                ? '<i class="fas fa-compress"></i>'
+                : '<i class="fas fa-expand"></i>';
+        }
     }
 
     toggleFullscreen() {
@@ -231,12 +290,14 @@ class IframePresentationController {
     }
 
     toggleHelp() {
-        this.help.classList.toggle('show');
-        setTimeout(() => {
-            if (this.help.classList.contains('show')) {
-                this.help.classList.remove('show');
-            }
-        }, 3000);
+        if (this.help) {
+            this.help.classList.toggle('show');
+            setTimeout(() => {
+                if (this.help && this.help.classList.contains('show')) {
+                    this.help.classList.remove('show');
+                }
+            }, 3000);
+        }
     }
 
     onSlideChange(slideNumber) {
@@ -290,4 +351,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('Iframe Presentation initialized successfully');
     console.log('Use arrow keys (← →) or navigation buttons to control slides');
+    console.log('Total slides:', presentation.getTotalSlides());
 });
